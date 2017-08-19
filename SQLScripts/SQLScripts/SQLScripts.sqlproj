@@ -60,5 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="LoginandAuthoration.sql" />
+    <None Include="SqlLoginData.sql" />
   </ItemGroup>
 </Project>
