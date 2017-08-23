@@ -1,41 +1,40 @@
-﻿use Customer
-
-create table c_category
+﻿
+create table CustomerCategory
 (
 ID int,
 categoryname nvarchar(50),
 primary key(ID)
 )
-create table c_subcategory(
+create table CustomerSubCategory(
 ID int,
 subcategoryname nvarchar(50),
 categoryID int,
 primary key(ID),
-constraint FK_categoryID foreign key(categoryID) references c_category(ID)
+foreign key(categoryID) references CustomerCategory(ID)
 );
-create table department
+create table CustomerDepartment
 (
 ID int,
 departmentname nvarchar(50),
 primary key(ID)
 );
 
-create table title
+create table CustomerTitle
 (
 ID int,
 titlename nvarchar(50),
 departmnetID int,
 primary key(ID),
-constraint FK_departmnetID foreign key(departmnetID) references department(ID)
+foreign key(departmnetID) references CustomerDepartment(ID)
 );
-create table payment_term
+create table PaymentTerm
 (
 ID int,
 term_name nvarchar(50),
 primary key(ID)
 );
 
-create table ourworker
+create table CustomerAddress
 (
 ID int,
 w_name nvarchar(50),
@@ -44,26 +43,17 @@ mail nvarchar(50),
 phonenumber int,
 primary key(ID)
 );
-create table adress
-(
-ID int,
-w_name nvarchar(50),
-pssword nvarchar(50),
-mail nvarchar(50),
-phonenumber int,
-primary key(ID)
-);
-create table costumer_worker
+create table CustomerWorker
 (
 ID int,
 cw_name nvarchar(50),
 departmnetID int,
 titleID int,
 primary key(ID),
-constraint FK_departmnetID foreign key(departmnetID) references department(ID),
-constraint FK_titleID foreign key(titleID) references title(ID),
+foreign key(departmnetID) references CustomerDepartment(ID),
+foreign key(titleID) references CustomerTitle(ID),
 );
-create table customer(
+create table Customer(
 ID int,
 c_name nvarchar(50),
 capital nvarchar(50),
@@ -76,6 +66,6 @@ webadress nvarchar(50),
 payment_termID int,
 representaryID int,
 primary key(ID),
-constraint FK_payment_termID foreign key(payment_termID) references payment_term(ID),
-constraint FK_representaryID foreign key(representaryID) references ourworker(ID)
+foreign key(payment_termID) references PaymentTerm(ID),
+foreign key(representaryID) references Worker(WorkerID)
 );
