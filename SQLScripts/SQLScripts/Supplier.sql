@@ -1,0 +1,25 @@
+﻿  create table Supplier(
+ID int,
+workerID int,
+s_name nvarchar(50),
+capital nvarchar(50),
+city nvarchar(50),
+town nvarchar(50),
+postcode int,
+telephone int,
+fax int,
+webadress nvarchar(50),
+payment_termID int,
+representaryID int,
+discountrate int,
+credilimit int,
+paymentmethodID int,
+notesID int,
+primary key(ID),
+constraint FK_workerID foreign key(workerID) references Worker(WorkerID),
+constraint FK_payment_termID foreign key(payment_termID) references payment_term(ID),
+constraint FK_representaryID foreign key(representaryID) references ourworker(ID),
+constraint FK_notesID foreign key(notesID) references notes(ID),
+);
+
+
